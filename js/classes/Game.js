@@ -1,14 +1,21 @@
+import Ball from "./Ball.js";
 import { Color } from "./Color.js";
 import { Field } from "./Field.js";
 import { Settings } from "./Settings.js";
 
 export class Game {
-	start() {
+	ball;
+
+	constructor() {
 		this.canvas = document.getElementById("2d-canvas");
 		this.canvas.width = Settings.canvas.width;
 		this.canvas.height = Settings.canvas.height;
 		this.context = this.canvas.getContext("2d");
+		
+		this.ball = new Ball(20, 40, 20, 20, "images/tennisBall.png", this.context);
+	}
 
+	start() {
 		requestAnimationFrame(this.update.bind(this));
 	}
 
@@ -20,6 +27,7 @@ export class Game {
 
 	draw() {
 		this.drawPlayingArea();
+		this.ball.draw();
 	}
 
 	drawPlayingArea() {
@@ -34,6 +42,6 @@ export class Game {
 	}
 
 	updateData() {
-		console.log("updateData");
+		// console.log("updateData");
 	}
 }
