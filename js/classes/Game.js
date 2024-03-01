@@ -19,10 +19,13 @@ export class Game {
 	}
 
 	draw() {
+		this.drawPlayingArea();
+	}
+
+	drawPlayingArea() {
 		this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		this.context.fillStyle = Color.background;
 		this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
-
 		this.context.fillStyle = Color.playArea;
 		this.context.fillRect(0, 0, this.canvas.width, 50);
 
