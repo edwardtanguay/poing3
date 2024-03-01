@@ -28,8 +28,4 @@ export default class Character {
 		return nextPosition;
 	}
 
-	draw() {
-		console.log('draw character');
-	}
-
 }

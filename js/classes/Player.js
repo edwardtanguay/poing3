@@ -1,6 +1,6 @@
 import Character from "./Character.js";
 
-export default class Ball extends Character {
+export default class Player extends Character {
 	constructor(x, y, width, height, spriteImagePath, context) {
 		super(x, y, width, height);
 		this.spriteImage = new Image();
@@ -8,6 +8,8 @@ export default class Ball extends Character {
 		this.context = context;
 	}
 
+	score = 0;
+	
 	draw() {
 		this.context.drawImage(
 			this.spriteImage,
@@ -17,10 +19,5 @@ export default class Ball extends Character {
 			this.size.height
 		);
 	}
-
-	move() {
-		this.position.x++;
-	}
-
 
 }

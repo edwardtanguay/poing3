@@ -1,18 +1,50 @@
 import Ball from "./Ball.js";
 import { Color } from "./Color.js";
 import { Field } from "./Field.js";
+import Player from "./Player.js";
 import { Settings } from "./Settings.js";
 
 export class Game {
 	ball;
+	player1;
+	player2;
 
 	constructor() {
 		this.canvas = document.getElementById("2d-canvas");
 		this.canvas.width = Settings.canvas.width;
 		this.canvas.height = Settings.canvas.height;
 		this.context = this.canvas.getContext("2d");
-		
-		this.ball = new Ball(20, 40, 20, 20, "images/tennisBall.png", this.context);
+
+		this.defineGameObjects();
+	}
+
+	defineGameObjects() {
+		this.ball = new Ball(
+			20,
+			40,
+			20,
+			20,
+			"images/tennisBall.png",
+			this.context
+		);
+
+		this.player1 = new Player(
+			30,
+			Settings.canvas.height / 2,
+			40,
+			90,
+			"images/Baseballschläger.png",
+			this.context
+		);
+
+		this.player2 = new Player(
+			Settings.canvas.width - 35,
+			Settings.canvas.height / 2,
+			40,
+			90,
+			"images/Laterne.png",
+			this.context
+		);
 	}
 
 	start() {
@@ -28,6 +60,8 @@ export class Game {
 	draw() {
 		this.drawPlayingArea();
 		this.ball.draw();
+		this.player1.draw();
+		this.player2.draw();
 	}
 
 	drawPlayingArea() {
@@ -42,6 +76,6 @@ export class Game {
 	}
 
 	updateData() {
-		// console.log("updateData");
+		this.ball.move();
 	}
 }
