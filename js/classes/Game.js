@@ -1,3 +1,5 @@
+import { Color } from "./Color.js";
+import { Field } from "./Field.js";
 import { Settings } from "./Settings.js";
 
 export class Game {
@@ -18,10 +20,17 @@ export class Game {
 
 	draw() {
 		this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-		console.log('draw');
+		this.context.fillStyle = Color.background;
+		this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+		this.context.fillStyle = Color.playArea;
+		this.context.fillRect(0, 0, this.canvas.width, 50);
+
+		const field = new Field();
+		field.draw(this.context);
 	}
 
 	updateData() {
-		console.log('updateData');
+		console.log("updateData");
 	}
 }
