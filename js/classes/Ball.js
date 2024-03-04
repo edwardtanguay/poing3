@@ -20,6 +20,7 @@ export default class Ball extends Character {
 
 	move() {
 		this.position.x++;
+		this.position.y++;
 	}
 
 
